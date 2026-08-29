@@ -1,0 +1,154 @@
+{
+  "TYPES": {
+    "JournalEntryPage": {
+      "uncle-angry-secret-journal": {
+        "presentation": "Présentation",
+        "relations": "Relations",
+        "lieu": "Lieu",
+        "magasin": "Magasin",
+        "galerie": "Galerie",
+        "imageseule": "Image"
+      }
+    }
+  },
+  "UASJ": {
+    "Sheets": {
+      "Carte": "Carte (sans redirection)"
+    },
+    "Presentation": {
+      "Role": "Nom & titre",
+      "Description": "Description"
+    },
+    "Kinds": {
+      "Label": "Type de journal",
+      "None": "Aucun (journal générique)",
+      "Personnage": "Personnage / PNJ",
+      "Lieu": "Lieu",
+      "Magasin": "Magasin / Boutique",
+      "Image": "Image seule",
+      "Galerie": "Galerie (plusieurs images)"
+    },
+    "Infos": {
+      "Label": "Infos",
+      "Configurer": "Choisir les infos affichées",
+      "ConfigurerTitre": "Infos affichées sur cette carte",
+      "ConfigurerHint": "Choisis les infos que tu veux mettre en avant sur cette carte. Ce choix est propre à cette carte, indépendant des autres.",
+      "Valider": "Valider",
+      "Verrouiller": "Bloquer les infos en place",
+      "Deverrouiller": "Débloquer les infos",
+      "Age": "Âge",
+      "Espece": "Espèce",
+      "Statut": "Statut",
+      "EtatVital": "État vital",
+      "Faction": "Faction",
+      "Taille": "Taille",
+      "Poids": "Poids",
+      "Alignement": "Alignement",
+      "Metier": "Métier",
+      "Origine": "Origine",
+      "Genre": "Genre",
+      "Pronom": "Pronom",
+      "Divinite": "Divinité",
+      "Langues": "Langues",
+      "Yeux": "Yeux",
+      "Cheveux": "Cheveux",
+      "Peau": "Peau",
+      "Voix": "Voix"
+    },
+    "Apparence": {
+      "Label": "Apparence",
+      "CouleurFond": "Couleur de fond",
+      "CouleurTexte": "Couleur du texte",
+      "Texture": "Texture de fond",
+      "TextureAucune": "Aucune (couleur unie)",
+      "TextureParchemin2": "Parchemin"
+    },
+    "Mode": {
+      "Modifier": "Modifier",
+      "Voir": "Voir la carte"
+    },
+    "Toggle": {
+      "VersRelations": "Voir les relations",
+      "VersPresentation": "Voir la présentation",
+      "Absente": "Aucune page correspondante trouvée dans ce journal.",
+      "MontrerJoueurs": "Montrer aux joueurs"
+    },
+    "Image": {
+      "Agrandir": "Agrandir l'image"
+    },
+    "Ambiance": {
+      "Label": "Ambiance sonore",
+      "BoutonHint": "Clic gauche : lecture / arrêt — Clic droit : choisir le son",
+      "DefinirTitre": "Choisir l'ambiance sonore de cette carte",
+      "DefinirHint": "Choisis un son dans tes playlists - il jouera pour tous ceux qui ont cette carte ouverte, en reprenant son volume et sa boucle tels que définis dans la playlist.",
+      "Valider": "Valider",
+      "Aucune": "Aucune"
+    },
+    "Relations": {
+      "Valider": "Valider",
+      "Supprimer": "Supprimer",
+      "Portrait": "Portrait",
+      "Nom": "Nom",
+      "Titre": "Titre de la relation",
+      "TextePublic": "Relation publique",
+      "TexteIntime": "Relation intime",
+      "VisibleA": "Visible en plus par",
+      "DropHint": "Glisse un journal ici",
+      "DropNouvelleHint": "Glisse un journal ici pour créer une nouvelle relation",
+      "DropInvalide": "Seuls les journaux peuvent être déposés ici",
+      "RechercherPlaceholder": "Rechercher un personnage...",
+      "VoirJournal": "Ouvrir le journal de ce personnage",
+      "JournalIntrouvable": "Le journal lié à cette relation n'existe plus",
+      "SuitLeJournal": "Portrait et nom suivent automatiquement le journal lié — seul son propriétaire peut les changer."
+    },
+    "Lieu": {
+      "Nom": "Nom du lieu",
+      "Description": "Description",
+      "Position": "Position",
+      "Type": "Type de lieu",
+      "Population": "Population",
+      "Danger": "Danger",
+      "Gouvernement": "Gouvernement",
+      "Climat": "Climat",
+      "Economie": "Économie",
+      "TabDescription": "Description",
+      "TabRelations": "Relations"
+    },
+    "Magasin": {
+      "Nom": "Nom du magasin",
+      "Description": "Description",
+      "TypeCommerce": "Type de commerce",
+      "Specialite": "Spécialité",
+      "Etat": "État",
+      "Horaires": "Horaires",
+      "Acces": "Accès",
+      "Emplacement": "Emplacement",
+      "Reputation": "Réputation",
+      "TabDescription": "Description",
+      "TabOfferings": "Marchandises",
+      "TabRelations": "Relations"
+    },
+    "Offerings": {
+      "Valider": "Valider",
+      "Supprimer": "Supprimer",
+      "Prix": "Prix",
+      "Quantite": "Quantité / Stock",
+      "DropHint": "Glisse un objet ici",
+      "DropNouvelleHint": "Glisse un objet ici pour l'ajouter aux marchandises",
+      "DropInvalide": "Seuls les objets peuvent être déposés ici",
+      "RechercherPlaceholder": "Rechercher un objet...",
+      "VoirItem": "Ouvrir cet objet",
+      "ItemIntrouvable": "L'objet lié n'existe plus",
+      "SuitItem": "Icône et nom suivent automatiquement l'objet lié."
+    },
+    "Galerie": {
+      "Nom": "Nom de la galerie",
+      "NomImagePlaceholder": "Petit nom de l'image...",
+      "Ajouter": "Ajouter une image",
+      "Supprimer": "Retirer cette image"
+    },
+    "ImagePage": {
+      "Nom": "Nom de l'image"
+    }
+  }
+}

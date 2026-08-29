@@ -1,0 +1,27 @@
+{{#if relations.length}}
+<input type="text" class="uasj-relations-search" autocomplete="off"
+       placeholder="{{localize 'UASJ.Relations.RechercherPlaceholder'}}">
+{{/if}}
+
+{{#each relations}}
+<div class="uasj-relation-card" data-nom="{{this.nom}}">
+    {{#if this.img}}
+    <img class="uasj-relation-portrait" src="{{this.img}}" alt="{{this.nom}}"
+         data-action="uasjAgrandirPortrait" data-src="{{this.img}}" data-nom="{{this.nom}}"
+         data-tooltip="{{localize 'UASJ.Image.Agrandir'}}">
+    {{/if}}
+    <div class="uasj-relation-body">
+        <h3 class="uasj-truncate{{#if this.journalUuid}} uasj-relation-nom-lien{{/if}}"
+            {{#if this.journalUuid}}
+            data-action="uasjVoirJournal" data-uuid="{{this.journalUuid}}"
+            data-tooltip="{{localize 'UASJ.Relations.VoirJournal'}}"
+            {{/if}}>
+            {{this.nom}}{{#if this.titre}} — {{this.titre}}{{/if}}
+        </h3>
+        <div class="uasj-relation-public uasj-truncate">{{{this.textePublic}}}</div>
+        {{#if this.texteIntime}}
+        <div class="uasj-relation-intime uasj-truncate">{{{this.texteIntime}}}</div>
+        {{/if}}
+    </div>
+</div>
+{{/each}}

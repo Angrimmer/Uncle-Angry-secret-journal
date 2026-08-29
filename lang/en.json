@@ -1,0 +1,154 @@
+{
+  "TYPES": {
+    "JournalEntryPage": {
+      "uncle-angry-secret-journal": {
+        "presentation": "Presentation",
+        "relations": "Relations",
+        "lieu": "Location",
+        "magasin": "Shop",
+        "galerie": "Gallery",
+        "imageseule": "Image"
+      }
+    }
+  },
+  "UASJ": {
+    "Sheets": {
+      "Carte": "Card (no redirect)"
+    },
+    "Presentation": {
+      "Role": "Name & title",
+      "Description": "Description"
+    },
+    "Kinds": {
+      "Label": "Journal type",
+      "None": "None (generic journal)",
+      "Personnage": "Character / NPC",
+      "Lieu": "Location",
+      "Magasin": "Shop",
+      "Image": "Single image",
+      "Galerie": "Gallery (multiple images)"
+    },
+    "Infos": {
+      "Label": "Info",
+      "Configurer": "Choose displayed info",
+      "ConfigurerTitre": "Info displayed on this card",
+      "ConfigurerHint": "Choose which info you want to highlight on this card. This choice is specific to this card, independent of the others.",
+      "Valider": "Confirm",
+      "Verrouiller": "Lock info in place",
+      "Deverrouiller": "Unlock info",
+      "Age": "Age",
+      "Espece": "Species",
+      "Statut": "Status",
+      "EtatVital": "Vital status",
+      "Faction": "Faction",
+      "Taille": "Size",
+      "Poids": "Weight",
+      "Alignement": "Alignment",
+      "Metier": "Occupation",
+      "Origine": "Origin",
+      "Genre": "Gender",
+      "Pronom": "Pronoun",
+      "Divinite": "Deity",
+      "Langues": "Languages",
+      "Yeux": "Eyes",
+      "Cheveux": "Hair",
+      "Peau": "Skin",
+      "Voix": "Voice"
+    },
+    "Apparence": {
+      "Label": "Appearance",
+      "CouleurFond": "Background colour",
+      "CouleurTexte": "Text colour",
+      "Texture": "Background texture",
+      "TextureAucune": "None (plain colour)",
+      "TextureParchemin2": "Parchment"
+    },
+    "Mode": {
+      "Modifier": "Edit",
+      "Voir": "View card"
+    },
+    "Toggle": {
+      "VersRelations": "View relations",
+      "VersPresentation": "View presentation",
+      "Absente": "No matching page found in this journal.",
+      "MontrerJoueurs": "Show to players"
+    },
+    "Image": {
+      "Agrandir": "Enlarge image"
+    },
+    "Ambiance": {
+      "Label": "Ambient sound",
+      "BoutonHint": "Left click: play / stop — Right click: choose the sound",
+      "DefinirTitre": "Choose this card's ambient sound",
+      "DefinirHint": "Choose a sound from your playlists - it will play for everyone who has this card open, using the volume and loop settings already defined on the playlist.",
+      "Valider": "Confirm",
+      "Aucune": "None"
+    },
+    "Relations": {
+      "Valider": "Confirm",
+      "Supprimer": "Remove",
+      "Portrait": "Portrait",
+      "Nom": "Name",
+      "Titre": "Relation title",
+      "TextePublic": "Public relation",
+      "TexteIntime": "Private relation",
+      "VisibleA": "Also visible to",
+      "DropHint": "Drop a journal here",
+      "DropNouvelleHint": "Drop a journal here to create a new relation",
+      "DropInvalide": "Only journals can be dropped here",
+      "RechercherPlaceholder": "Search for a character...",
+      "VoirJournal": "Open this character's journal",
+      "JournalIntrouvable": "The journal linked to this relation no longer exists",
+      "SuitLeJournal": "Portrait and name automatically follow the linked journal — only its owner can change them."
+    },
+    "Lieu": {
+      "Nom": "Location name",
+      "Description": "Description",
+      "Position": "Position",
+      "Type": "Location type",
+      "Population": "Population",
+      "Danger": "Danger",
+      "Gouvernement": "Government",
+      "Climat": "Climate",
+      "Economie": "Economy",
+      "TabDescription": "Description",
+      "TabRelations": "Relations"
+    },
+    "Magasin": {
+      "Nom": "Shop name",
+      "Description": "Description",
+      "TypeCommerce": "Type of shop",
+      "Specialite": "Specialty",
+      "Etat": "Status",
+      "Horaires": "Opening hours",
+      "Acces": "Access",
+      "Emplacement": "Location",
+      "Reputation": "Reputation",
+      "TabDescription": "Description",
+      "TabOfferings": "Wares",
+      "TabRelations": "Relations"
+    },
+    "Offerings": {
+      "Valider": "Confirm",
+      "Supprimer": "Remove",
+      "Prix": "Price",
+      "Quantite": "Quantity / Stock",
+      "DropHint": "Drop an item here",
+      "DropNouvelleHint": "Drop an item here to add it to the wares",
+      "DropInvalide": "Only items can be dropped here",
+      "RechercherPlaceholder": "Search for an item...",
+      "VoirItem": "Open this item",
+      "ItemIntrouvable": "The linked item no longer exists",
+      "SuitItem": "Icon and name automatically follow the linked item."
+    },
+    "Galerie": {
+      "Nom": "Gallery name",
+      "NomImagePlaceholder": "Image's short name...",
+      "Ajouter": "Add an image",
+      "Supprimer": "Remove this image"
+    },
+    "ImagePage": {
+      "Nom": "Image name"
+    }
+  }
+}

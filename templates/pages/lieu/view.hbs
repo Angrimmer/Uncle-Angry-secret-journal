@@ -1,0 +1,44 @@
+<div class="uasj-lieu-view">
+
+    <div class="uasj-lieu-header">
+        <div class="uasj-lieu-icone-wrap">
+            {{#if src}}
+            <img class="uasj-lieu-icone" src="{{src}}" alt="{{name}}"
+                 data-action="uasjAgrandirIcone" data-tooltip="{{localize 'UASJ.Image.Agrandir'}}">
+            {{/if}}
+        </div>
+        <div class="uasj-lieu-header-right">
+            <h1 class="uasj-lieu-nom">{{name}}</h1>
+            {{#if infos.length}}
+            <div class="uasj-infos-canvas{{#if isOwner}}{{#unless infosVerrouillees}} uasj-draggable{{/unless}}{{/if}}">
+                {{#each infos}}
+                {{#if this.valeur}}
+                <span class="uasj-info-chip" data-info-id="{{this.id}}" style="left: {{this.x}}%; top: {{this.y}}%;">
+                    <strong>{{localize this.label}}</strong> {{this.valeur}}
+                </span>
+                {{/if}}
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <nav class="uasj-tabs tabs" data-group="primary">
+        {{#each tabs}}
+        <a class="uasj-tab-link {{this.cssClass}}" data-action="tab" data-tab="{{this.id}}" data-group="{{this.group}}">
+            <i class="{{this.icon}}"></i> {{localize this.label}}
+        </a>
+        {{/each}}
+    </nav>
+
+    <div class="tab uasj-lieu-tab-description{{#if tabs.description.active}} active{{/if}}"
+         data-group="primary" data-tab="description">
+        {{{description}}}
+    </div>
+
+    <div class="tab uasj-lieu-tab-relations{{#if tabs.relations.active}} active{{/if}}"
+         data-group="primary" data-tab="relations">
+        {{> "modules/uncle-angry-secret-journal/templates/partials/relations-panel-view.hbs"}}
+    </div>
+
+</div>

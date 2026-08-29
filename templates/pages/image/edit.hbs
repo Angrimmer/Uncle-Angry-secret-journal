@@ -1,0 +1,13 @@
+<section class="uasj-image-view uasj-image-edit">
+
+    <div class="uasj-field">
+        <label>{{localize "UASJ.ImagePage.Nom"}}</label>
+        <input type="text" name="name" value="{{name}}">
+    </div>
+
+    <figure class="uasj-image-figure">
+        {{#if src}}<img src="{{src}}" alt="{{name}}">{{/if}}
+    </figure>
+    {{formInput fields.src value=source.src input=srcInput}}
+
+</section>

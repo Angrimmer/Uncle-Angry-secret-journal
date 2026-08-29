@@ -1,0 +1,63 @@
+<section class="uasj-lieu-view uasj-lieu-edit">
+
+    <div class="uasj-lieu-header">
+        <div class="uasj-lieu-icone-wrap">
+            <figure class="uasj-lieu-icone-figure">
+                {{#if src}}<img src="{{src}}" alt="{{name}}">{{/if}}
+            </figure>
+            {{formInput fields.src value=source.src input=srcInput}}
+        </div>
+
+        <div class="uasj-lieu-header-right">
+            <div class="uasj-field">
+                <label>{{localize "UASJ.Lieu.Nom"}}</label>
+                <input type="text" name="name" value="{{name}}">
+            </div>
+
+            <div class="uasj-field uasj-apparence">
+                <label class="uasj-apparence-swatch">
+                    <input type="color" name="system.couleurFond" value="{{source.system.couleurFond}}">
+                    {{localize "UASJ.Apparence.CouleurFond"}}
+                </label>
+            </div>
+
+            {{#if infos.length}}
+            <div class="uasj-field uasj-infos-edit">
+                <label>{{localize "UASJ.Infos.Label"}}</label>
+                {{#each infos}}
+                <div class="uasj-info-row">
+                    <input type="hidden" name="system.infos.{{@index}}.id" value="{{this.id}}">
+                    <span class="uasj-info-row-label">{{localize this.label}}</span>
+                    {{#if this.choices}}
+                    <select name="system.infos.{{@index}}.valeur">
+                        {{selectOptions this.choices selected=this.valeur blank=""}}
+                    </select>
+                    {{else}}
+                    <input type="text" name="system.infos.{{@index}}.valeur" value="{{this.valeur}}">
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <nav class="uasj-tabs tabs" data-group="primary">
+        {{#each tabs}}
+        <a class="uasj-tab-link {{this.cssClass}}" data-action="tab" data-tab="{{this.id}}" data-group="{{this.group}}">
+            <i class="{{this.icon}}"></i> {{localize this.label}}
+        </a>
+        {{/each}}
+    </nav>
+
+    <div class="tab uasj-lieu-tab-description{{#if tabs.description.active}} active{{/if}}"
+         data-group="primary" data-tab="description">
+        <textarea name="system.description">{{source.system.description}}</textarea>
+    </div>
+
+    <div class="tab uasj-lieu-tab-relations{{#if tabs.relations.active}} active{{/if}}"
+         data-group="primary" data-tab="relations">
+        {{> "modules/uncle-angry-secret-journal/templates/partials/relations-panel-edit.hbs"}}
+    </div>
+
+</section>

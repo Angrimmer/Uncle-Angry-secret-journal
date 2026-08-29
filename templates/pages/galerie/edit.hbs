@@ -1,0 +1,29 @@
+<section class="uasj-galerie-view uasj-galerie-edit">
+
+    <div class="uasj-field">
+        <label>{{localize "UASJ.Galerie.Nom"}}</label>
+        <input type="text" name="name" value="{{name}}">
+    </div>
+
+    <div class="uasj-galerie-grid-edit">
+        {{#each images}}
+        <div class="uasj-galerie-item-edit">
+            <figure class="uasj-galerie-item-figure">
+                {{#if this.img}}<img src="{{this.img}}" alt="">{{/if}}
+            </figure>
+            <file-picker type="image" name="system.images.{{this.index}}.img" value="{{this.img}}"></file-picker>
+            <input type="text" class="uasj-galerie-item-nom" name="system.images.{{this.index}}.nom" value="{{this.nom}}"
+                   placeholder="{{localize 'UASJ.Galerie.NomImagePlaceholder'}}">
+            <button type="button" class="uasj-supprimer-image" data-action="uasjSupprimerImage" data-index="{{this.index}}"
+                    data-tooltip="{{localize 'UASJ.Galerie.Supprimer'}}">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+        {{/each}}
+    </div>
+
+    <button type="button" class="uasj-galerie-ajouter" data-action="uasjAjouterImage">
+        <i class="fa-solid fa-plus"></i> {{localize "UASJ.Galerie.Ajouter"}}
+    </button>
+
+</section>

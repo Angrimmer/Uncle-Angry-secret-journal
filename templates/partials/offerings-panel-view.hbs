@@ -1,0 +1,35 @@
+{{#if offerings.length}}
+<input type="text" class="uasj-offerings-search" autocomplete="off"
+       placeholder="{{localize 'UASJ.Offerings.RechercherPlaceholder'}}">
+{{/if}}
+
+{{#each offerings}}
+<div class="uasj-offering-card" data-nom="{{this.nom}}">
+    {{#if this.img}}
+    <img class="uasj-offering-icone" src="{{this.img}}" alt="{{this.nom}}"
+         data-action="uasjAgrandirIconeOffering" data-src="{{this.img}}" data-nom="{{this.nom}}"
+         data-tooltip="{{localize 'UASJ.Image.Agrandir'}}">
+    {{/if}}
+    <div class="uasj-offering-body">
+        <h3 class="uasj-truncate{{#if this.itemUuid}} uasj-offering-nom-lien{{/if}}"
+            {{#if this.itemUuid}}
+            data-action="uasjVoirItem" data-uuid="{{this.itemUuid}}"
+            data-tooltip="{{localize 'UASJ.Offerings.VoirItem'}}"
+            {{/if}}>
+            {{this.nom}}
+            {{#if this.introuvable}}
+            <span class="uasj-offering-introuvable" data-tooltip="{{localize 'UASJ.Offerings.ItemIntrouvable'}}">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </span>
+            {{/if}}
+        </h3>
+        <div class="uasj-offering-meta">
+            {{#if this.prix}}<span class="uasj-offering-prix">{{localize "UASJ.Offerings.Prix"}} : {{this.prix}}</span>{{/if}}
+            {{#if this.quantite}}<span class="uasj-offering-quantite">{{localize "UASJ.Offerings.Quantite"}} : {{this.quantite}}</span>{{/if}}
+        </div>
+        {{#if this.description}}
+        <div class="uasj-offering-description uasj-truncate">{{{this.description}}}</div>
+        {{/if}}
+    </div>
+</div>
+{{/each}}

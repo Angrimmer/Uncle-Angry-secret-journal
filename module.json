@@ -1,0 +1,52 @@
+{
+  "id": "uncle-angry-secret-journal",
+  "title": "Uncle Angry Secret Journal",
+  "description": "Module de journal enrichi pour Foundry VTT — présentation de personnages, relations et types de journaux personnalisés.",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Angrimmer"
+    }
+  ],
+  "documentTypes": {
+    "JournalEntryPage": {
+      "presentation": {},
+      "relations": {},
+      "lieu": {},
+      "magasin": {},
+      "galerie": {},
+      "imageseule": {}
+    }
+  },
+  "relationships": {
+    "recommends": [
+      { "id": "lib-wrapper", "type": "module" }
+    ]
+  },
+  "esmodules": [
+    "module/uncle-angry-secret-journal.mjs"
+  ],
+  "styles": [
+    "css/uncle-angry-secret-journal.css"
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

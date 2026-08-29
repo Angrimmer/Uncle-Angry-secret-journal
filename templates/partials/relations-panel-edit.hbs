@@ -1,0 +1,112 @@
+{{#if editingRelation}}
+<fieldset class="uasj-relation-row">
+    <div class="uasj-relation-row-header">
+        <legend class="uasj-truncate">{{editingRelation.nom}}</legend>
+        <button type="button" class="uasj-valider-relation" data-action="uasjValiderRelation">
+            <i class="fa-solid fa-check"></i> {{localize "UASJ.Relations.Valider"}}
+        </button>
+    </div>
+
+    <!-- Not editable by hand, but still needs a form field: the array
+         autosave (helpers/autosave.mjs) rebuilds this whole relation
+         from every input present in the form on any change - a schema
+         field with no input here would just get wiped back to blank
+         the next time any other field on this relation is edited. -->
+    <input type="hidden" name="system.relations.{{editingRelation.index}}.journalUuid" value="{{editingRelation.journalUuid}}">
+
+    <div class="uasj-relation-link">
+        <div class="uasj-relation-drop" data-index="{{editingRelation.index}}">
+            {{#if editingRelation.img}}
+            <img src="{{editingRelation.img}}" alt="">
+            {{else}}
+            <span>{{localize "UASJ.Relations.DropHint"}}</span>
+            {{/if}}
+        </div>
+
+        <div class="uasj-relation-search">
+            <input type="text" class="uasj-relation-search-input" autocomplete="off"
+                   placeholder="{{localize 'UASJ.Relations.RechercherPlaceholder'}}">
+            <div class="uasj-relation-search-results"></div>
+        </div>
+    </div>
+
+    {{#if editingRelation.journalUuid}}
+    <!-- Linked: img/nom follow the target's own presentation page live
+         (see resolveIdentity/withLiveIdentity in helpers/relations-manager.mjs)
+         - only the journal's own owner can change them, not from here.
+         Still need the inputs (see the journalUuid comment above), just
+         hidden. -->
+    <input type="hidden" name="system.relations.{{editingRelation.index}}.img" value="{{editingRelation.img}}">
+    <input type="hidden" name="system.relations.{{editingRelation.index}}.nom" value="{{editingRelation.nom}}">
+    <p class="uasj-relation-liee-note">{{localize "UASJ.Relations.SuitLeJournal"}}</p>
+    {{else}}
+    <div class="form-group">
+        <label>{{localize "UASJ.Relations.Portrait"}}</label>
+        <div class="form-fields">
+            <input type="text" name="system.relations.{{editingRelation.index}}.img" value="{{editingRelation.img}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "UASJ.Relations.Nom"}}</label>
+        <div class="form-fields">
+            <input type="text" name="system.relations.{{editingRelation.index}}.nom" value="{{editingRelation.nom}}">
+        </div>
+    </div>
+    {{/if}}
+
+    <div class="form-group">
+        <label>{{localize "UASJ.Relations.Titre"}}</label>
+        <div class="form-fields">
+            <input type="text" name="system.relations.{{editingRelation.index}}.titre" value="{{editingRelation.titre}}">
+        </div>
+    </div>
+
+    <div class="form-group stacked">
+        <label>{{localize "UASJ.Relations.TextePublic"}}</label>
+        <textarea name="system.relations.{{editingRelation.index}}.textePublic">{{editingRelation.textePublic}}</textarea>
+    </div>
+
+    <div class="form-group stacked">
+        <label>{{localize "UASJ.Relations.TexteIntime"}}</label>
+        <textarea name="system.relations.{{editingRelation.index}}.texteIntime">{{editingRelation.texteIntime}}</textarea>
+    </div>
+
+    <div class="form-group stacked">
+        <label>{{localize "UASJ.Relations.VisibleA"}}</label>
+        <multi-select name="system.relations.{{editingRelation.index}}.intimeVisibleA">
+            {{selectOptions utilisateurs selected=editingRelation.intimeVisibleA}}
+        </multi-select>
+    </div>
+</fieldset>
+
+{{else}}
+
+<div class="uasj-relation-nouvelle">
+    <div class="uasj-relation-drop-nouvelle">
+        <i class="fa-solid fa-arrow-down"></i> {{localize "UASJ.Relations.DropNouvelleHint"}}
+    </div>
+
+    <div class="uasj-relation-search">
+        <input type="text" class="uasj-relation-search-input" autocomplete="off"
+               placeholder="{{localize 'UASJ.Relations.RechercherPlaceholder'}}">
+        <div class="uasj-relation-search-results"></div>
+    </div>
+</div>
+
+{{#each relations}}
+<div class="uasj-relation-list-row" data-action="uasjOuvrirRelation" data-index="{{this.index}}">
+    {{#if this.img}}
+    <img class="uasj-relation-list-thumb" src="{{this.img}}" alt="">
+    {{else}}
+    <div class="uasj-relation-list-thumb uasj-relation-list-thumb-vide"></div>
+    {{/if}}
+    <span class="uasj-truncate uasj-relation-list-nom">{{this.nom}}{{#if this.titre}} — {{this.titre}}{{/if}}</span>
+    <button type="button" class="uasj-supprimer-relation" data-action="uasjSupprimerRelation" data-index="{{this.index}}"
+            data-tooltip="{{localize 'UASJ.Relations.Supprimer'}}">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</div>
+{{/each}}
+
+{{/if}}

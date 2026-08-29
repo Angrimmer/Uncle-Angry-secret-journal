@@ -1,0 +1,69 @@
+<section class="uasj-presentation-view">
+
+    <div class="uasj-card-top">
+
+        <div class="uasj-card-left">
+            <figure class="uasj-portrait">
+                {{#if src}}<img src="{{ src }}" alt="{{ name }}">{{/if}}
+            </figure>
+
+            {{formInput fields.src value=source.src input=srcInput}}
+
+            <button type="button" class="uasj-toggle" data-action="uasjVersRelations"
+                    data-tooltip="{{localize 'UASJ.Toggle.VersRelations'}}">
+                <i class="fa-solid fa-people-arrows"></i>
+            </button>
+        </div>
+
+        <div class="uasj-card-right">
+            <div class="uasj-field">
+                <label>{{localize "UASJ.Presentation.Role"}}</label>
+                <input type="text" name="system.role" value="{{source.system.role}}">
+            </div>
+
+            {{#if infos.length}}
+            <div class="uasj-field uasj-infos-edit">
+                <label>{{localize "UASJ.Infos.Label"}}</label>
+                {{#each infos}}
+                <div class="uasj-info-row">
+                    <input type="hidden" name="system.infos.{{@index}}.id" value="{{this.id}}">
+                    <span class="uasj-info-row-label">{{localize this.label}}</span>
+                    {{#if this.choices}}
+                    <select name="system.infos.{{@index}}.valeur">
+                        {{selectOptions this.choices selected=this.valeur blank=""}}
+                    </select>
+                    {{else}}
+                    <input type="text" name="system.infos.{{@index}}.valeur" value="{{this.valeur}}">
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+
+            <div class="uasj-field uasj-apparence">
+                <label>{{localize "UASJ.Apparence.Label"}}</label>
+                <div class="uasj-apparence-row">
+                    <label class="uasj-apparence-swatch">
+                        <input type="color" name="system.couleurFond" value="{{source.system.couleurFond}}">
+                        {{localize "UASJ.Apparence.CouleurFond"}}
+                    </label>
+                    <label class="uasj-apparence-swatch">
+                        <input type="color" name="system.couleurTexte" value="{{source.system.couleurTexte}}">
+                        {{localize "UASJ.Apparence.CouleurTexte"}}
+                    </label>
+                </div>
+                <div class="uasj-apparence-row">
+                    <label class="uasj-apparence-texture">
+                        {{localize "UASJ.Apparence.Texture"}}
+                        <select name="system.texture">
+                            {{selectOptions textures selected=source.system.texture blank=(localize "UASJ.Apparence.TextureAucune")}}
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

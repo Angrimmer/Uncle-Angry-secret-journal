@@ -1,0 +1,82 @@
+{{#if editingOffering}}
+<fieldset class="uasj-offering-row">
+    <div class="uasj-offering-row-header">
+        <legend class="uasj-truncate">{{editingOffering.nom}}</legend>
+        <button type="button" class="uasj-valider-offering" data-action="uasjValiderOffering">
+            <i class="fa-solid fa-check"></i> {{localize "UASJ.Offerings.Valider"}}
+        </button>
+    </div>
+
+    <!-- Not editable by hand, but still needs a form field: the array
+         autosave (helpers/autosave.mjs) rebuilds this whole offering
+         from every input present in the form on any change - a schema
+         field with no input here would just get wiped back to blank
+         the next time any other field on this offering is edited. -->
+    <input type="hidden" name="system.offerings.{{editingOffering.index}}.itemUuid" value="{{editingOffering.itemUuid}}">
+    <input type="hidden" name="system.offerings.{{editingOffering.index}}.img" value="{{editingOffering.img}}">
+    <input type="hidden" name="system.offerings.{{editingOffering.index}}.nom" value="{{editingOffering.nom}}">
+
+    <div class="uasj-offering-link">
+        <div class="uasj-offering-drop" data-index="{{editingOffering.index}}">
+            {{#if editingOffering.img}}
+            <img src="{{editingOffering.img}}" alt="">
+            {{else}}
+            <span>{{localize "UASJ.Offerings.DropHint"}}</span>
+            {{/if}}
+        </div>
+
+        <div class="uasj-offering-search">
+            <input type="text" class="uasj-offering-search-input" autocomplete="off"
+                   placeholder="{{localize 'UASJ.Offerings.RechercherPlaceholder'}}">
+            <div class="uasj-offering-search-results"></div>
+        </div>
+    </div>
+
+    <p class="uasj-offering-liee-note">{{localize "UASJ.Offerings.SuitItem"}}</p>
+
+    <div class="form-group">
+        <label>{{localize "UASJ.Offerings.Prix"}}</label>
+        <div class="form-fields">
+            <input type="text" name="system.offerings.{{editingOffering.index}}.prix" value="{{editingOffering.prix}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "UASJ.Offerings.Quantite"}}</label>
+        <div class="form-fields">
+            <input type="text" name="system.offerings.{{editingOffering.index}}.quantite" value="{{editingOffering.quantite}}">
+        </div>
+    </div>
+</fieldset>
+
+{{else}}
+
+<div class="uasj-offering-nouvelle">
+    <div class="uasj-offering-drop-nouvelle">
+        <i class="fa-solid fa-arrow-down"></i> {{localize "UASJ.Offerings.DropNouvelleHint"}}
+    </div>
+
+    <div class="uasj-offering-search">
+        <input type="text" class="uasj-offering-search-input" autocomplete="off"
+               placeholder="{{localize 'UASJ.Offerings.RechercherPlaceholder'}}">
+        <div class="uasj-offering-search-results"></div>
+    </div>
+</div>
+
+{{#each offerings}}
+<div class="uasj-offering-list-row" data-action="uasjOuvrirOffering" data-index="{{this.index}}">
+    {{#if this.img}}
+    <img class="uasj-offering-list-thumb" src="{{this.img}}" alt="">
+    {{else}}
+    <div class="uasj-offering-list-thumb uasj-offering-list-thumb-vide"></div>
+    {{/if}}
+    <span class="uasj-truncate uasj-offering-list-nom">{{this.nom}}</span>
+    {{#if this.prix}}<span class="uasj-offering-list-prix uasj-truncate">{{this.prix}}</span>{{/if}}
+    <button type="button" class="uasj-supprimer-offering" data-action="uasjSupprimerOffering" data-index="{{this.index}}"
+            data-tooltip="{{localize 'UASJ.Offerings.Supprimer'}}">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</div>
+{{/each}}
+
+{{/if}}

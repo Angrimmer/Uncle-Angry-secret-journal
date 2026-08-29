@@ -1,0 +1,17 @@
+<div class="uasj-galerie-view">
+
+    <h1 class="uasj-galerie-nom">{{name}}</h1>
+
+    <div class="uasj-galerie-grid">
+        {{#each images}}
+        {{#if this.img}}
+        <figure class="uasj-galerie-item">
+            <img src="{{this.img}}" alt="{{this.nom}}" data-action="uasjAgrandirImage"
+                 data-src="{{this.img}}" data-nom="{{this.nom}}" data-tooltip="{{localize 'UASJ.Image.Agrandir'}}">
+            {{#if this.nom}}<figcaption class="uasj-truncate">{{this.nom}}</figcaption>{{/if}}
+        </figure>
+        {{/if}}
+        {{/each}}
+    </div>
+
+</div>

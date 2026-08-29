@@ -1,0 +1,37 @@
+<div class="uasj-presentation-view">
+
+    <div class="uasj-card-top">
+
+        <div class="uasj-card-left">
+            {{#if src}}
+            <figure class="uasj-portrait">
+                <img src="{{ src }}" alt="{{ name }}" data-action="uasjAgrandirPortrait"
+                     data-tooltip="{{localize 'UASJ.Image.Agrandir'}}">
+            </figure>
+            {{/if}}
+
+            <button type="button" class="uasj-toggle" data-action="uasjVersRelations"
+                    data-tooltip="{{localize 'UASJ.Toggle.VersRelations'}}">
+                <i class="fa-solid fa-people-arrows"></i>
+            </button>
+        </div>
+
+        <div class="uasj-card-right">
+            {{#if role}}<h1 class="uasj-nom">{{ role }}</h1>{{/if}}
+
+            {{#if infos.length}}
+            <div class="uasj-infos-canvas{{#if isOwner}}{{#unless infosVerrouillees}} uasj-draggable{{/unless}}{{/if}}">
+                {{#each infos}}
+                {{#if this.valeur}}
+                <span class="uasj-info-chip" data-info-id="{{this.id}}" style="left: {{this.x}}%; top: {{this.y}}%;">
+                    <strong>{{localize this.label}}</strong> {{this.valeur}}
+                </span>
+                {{/if}}
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+
+    </div>
+
+</div>

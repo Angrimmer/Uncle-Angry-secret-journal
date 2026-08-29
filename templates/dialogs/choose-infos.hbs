@@ -1,0 +1,9 @@
+<p>{{localize "UASJ.Infos.ConfigurerHint"}}</p>
+<div class="form-group uasj-choose-infos">
+    {{#each catalog}}
+    <label class="checkbox">
+        <input type="checkbox" name="{{this.id}}" {{checked this.checked}}>
+        {{localize this.label}}
+    </label>
+    {{/each}}
+</div>
