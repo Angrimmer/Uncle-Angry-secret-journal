@@ -39,7 +39,7 @@ In Foundry, go to the **Add-on Modules** tab → **Install Module**, then paste 
 
 ## Inspiration
 
-The structure of some cards (Location, Shop) is inspired by the ergonomics of the [Monk's Enhanced Journal](https://foundryvtt.com/packages/monks-enhanced-journal) module — used as a reference for behaviour only. No code was reused from it; this module was built independently, from scratch.
+The structure of some cards (Location, Shop) is inspired by the ergonomics of the [Monk's Enhanced Journal](https://foundryvtt.com/packages/monks-enhanced-journal) module — used as a reference for behaviour -and visual sometimes- only. No code was reused from it; this module was built independently, from scratch.
 
 ## Why this module
 

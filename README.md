@@ -39,7 +39,7 @@ Dans Foundry, onglet **Modules complémentaires** → **Installer un module**, p
 
 ## Inspiration
 
-La structure de certaines fiches (Lieu, Magasin) s'inspire de l'ergonomie du module [Monk's Enhanced Journal](https://foundryvtt.com/packages/monks-enhanced-journal) — repris comme référence de fonctionnement uniquement. Aucun code n'en a été réutilisé ; ce module est développé indépendamment, de zéro.
+La structure de certaines fiches (Lieu, Magasin) s'inspire de l'ergonomie du module [Monk's Enhanced Journal](https://foundryvtt.com/packages/monks-enhanced-journal) — repris comme référence de fonctionnement uniquement et visuel parfois. Aucun code n'en a été réutilisé ; ce module est développé indépendamment, de zéro.
 
 ## Pourquoi ce module
 

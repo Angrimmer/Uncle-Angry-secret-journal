@@ -1,7 +1,7 @@
 {
   "id": "uncle-angry-secret-journal",
   "title": "Uncle Angry Secret Journal",
-  "description": "Module de journal enrichi pour Foundry VTT — présentation de personnages, relations et types de journaux personnalisés.",
+  "description": "Module de journal enrichi pour Foundry VTT — personnages, lieux, magasins et galeries d'images en véritables fiches, indépendant de tout système de jeu.",
   "version": "0.0.1",
   "compatibility": {
     "minimum": "13",
@@ -46,7 +46,7 @@
       "path": "lang/en.json"
     }
   ],
-  "url": "",
+  "url": "https://github.com/Angrimmer/Uncle-Angry-secret-journal",
   "manifest": "",
   "download": ""
 }
