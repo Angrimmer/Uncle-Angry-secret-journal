@@ -1,6 +1,7 @@
 import { MODULE_ID } from "./constants.mjs";
 import { openPageInMode } from "./open-page.mjs";
 import { showImagePopout } from "./image-popout.mjs";
+import { getJournalKind } from "./journal-kinds.mjs";
 
 const PRESENTATION_TYPE = `${MODULE_ID}.presentation`;
 
@@ -21,12 +22,21 @@ const BLANK_RELATION = {
  * independent copy of img/nom: every place it's displayed re-reads them
  * live from the target, and edits there show up everywhere that relation
  * appears without anyone needing to go update each copy by hand.
+ *
+ * Not every linked entry is a Personnage though - a relation can just as
+ * well point at a Lieu or a Magasin, whose icon lives on their own single
+ * page (its native `src`), not under a "presentation" page type. Find
+ * whichever page is that entry's actual primary page (same lookup
+ * CardEntrySheet itself uses to decide what to open) rather than assuming
+ * "presentation" is the only shape a linked card can have.
  */
 function resolveIdentity(entry) {
-  const presentation = entry.pages?.find(page => page.type === PRESENTATION_TYPE);
+  const kind = getJournalKind(entry.getFlag(MODULE_ID, "kind"));
+  const primaryType = kind?.pageTypes?.[0];
+  const primaryPage = primaryType ? entry.pages?.find(page => page.type === primaryType) : null;
   return {
-    img: presentation?.src ?? entry.img ?? "",
-    nom: presentation?.system.role || entry.name
+    img: primaryPage?.src ?? entry.img ?? "",
+    nom: entry.name
   };
 }
 
