@@ -52,7 +52,8 @@ export const INFO_CATALOG = [
   { id: "liens", label: "UASJ.Infos.Liens" },
   { id: "defauts", label: "UASJ.Infos.Defauts" },
   { id: "localisation", label: "UASJ.Infos.Localisation" },
-  { id: "ascendance", label: "UASJ.Infos.Ascendance" }
+  { id: "ascendance", label: "UASJ.Infos.Ascendance" },
+  { id: "presence", label: "UASJ.Infos.Presence" }
 ];
 
 export function getInfoDefinition(id) {

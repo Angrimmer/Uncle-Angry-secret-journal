@@ -55,12 +55,13 @@
       "Peau": "Skin",
       "Voix": "Voice",
       "Surnoms": "Nicknames",
-      "Traits": "Personality traits",
+      "Traits": "Traits",
       "Ideaux": "Ideals",
       "Liens": "Bonds",
       "Defauts": "Flaws",
       "Localisation": "Location",
-      "Ascendance": "Ancestry"
+      "Ascendance": "Ancestry",
+      "Presence": "Presence"
     },
     "Apparence": {
       "Label": "Appearance",
