@@ -46,12 +46,13 @@ export const INFO_CATALOG = [
   { id: "cheveux", label: "UASJ.Infos.Cheveux" },
   { id: "peau", label: "UASJ.Infos.Peau" },
   { id: "voix", label: "UASJ.Infos.Voix" },
-  { id: "ascendance", label: "UASJ.Infos.Ascendance" },
+  { id: "surnoms", label: "UASJ.Infos.Surnoms" },
   { id: "traits", label: "UASJ.Infos.Traits" },
   { id: "ideaux", label: "UASJ.Infos.Ideaux" },
   { id: "liens", label: "UASJ.Infos.Liens" },
   { id: "defauts", label: "UASJ.Infos.Defauts" },
-  { id: "localisation", label: "UASJ.Infos.Localisation" }
+  { id: "localisation", label: "UASJ.Infos.Localisation" },
+  { id: "ascendance", label: "UASJ.Infos.Ascendance" }
 ];
 
 export function getInfoDefinition(id) {

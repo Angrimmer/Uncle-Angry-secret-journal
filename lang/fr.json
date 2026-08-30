@@ -54,12 +54,13 @@
       "Cheveux": "Cheveux",
       "Peau": "Peau",
       "Voix": "Voix",
-      "Ascendance": "Ascendance",
+      "Surnoms": "Surnoms",
       "Traits": "Traits de caractère",
       "Ideaux": "Idéaux",
       "Liens": "Liens",
       "Defauts": "Défauts",
-      "Localisation": "Localisation"
+      "Localisation": "Localisation",
+      "Ascendance": "Ascendance"
     },
     "Apparence": {
       "Label": "Apparence",
