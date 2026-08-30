@@ -53,7 +53,13 @@
       "Yeux": "Yeux",
       "Cheveux": "Cheveux",
       "Peau": "Peau",
-      "Voix": "Voix"
+      "Voix": "Voix",
+      "Ascendance": "Ascendance",
+      "Traits": "Traits de caractère",
+      "Ideaux": "Idéaux",
+      "Liens": "Liens",
+      "Defauts": "Défauts",
+      "Localisation": "Localisation"
     },
     "Apparence": {
       "Label": "Apparence",

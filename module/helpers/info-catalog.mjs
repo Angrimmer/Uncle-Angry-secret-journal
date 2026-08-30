@@ -45,7 +45,13 @@ export const INFO_CATALOG = [
   { id: "yeux", label: "UASJ.Infos.Yeux" },
   { id: "cheveux", label: "UASJ.Infos.Cheveux" },
   { id: "peau", label: "UASJ.Infos.Peau" },
-  { id: "voix", label: "UASJ.Infos.Voix" }
+  { id: "voix", label: "UASJ.Infos.Voix" },
+  { id: "ascendance", label: "UASJ.Infos.Ascendance" },
+  { id: "traits", label: "UASJ.Infos.Traits" },
+  { id: "ideaux", label: "UASJ.Infos.Ideaux" },
+  { id: "liens", label: "UASJ.Infos.Liens" },
+  { id: "defauts", label: "UASJ.Infos.Defauts" },
+  { id: "localisation", label: "UASJ.Infos.Localisation" }
 ];
 
 export function getInfoDefinition(id) {

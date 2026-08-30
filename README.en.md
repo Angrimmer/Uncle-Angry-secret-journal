@@ -35,7 +35,13 @@ Available on (almost) every card type above:
 
 ## Installation
 
-In Foundry, go to the **Add-on Modules** tab → **Install Module**, then paste this repository's manifest URL. You can also download the latest version from this repository's [Releases](../../releases) tab and extract it into your `Data/modules` folder.
+In Foundry, go to the **Add-on Modules** tab → **Install Module**, then paste this manifest URL:
+
+```
+https://github.com/Angrimmer/Uncle-Angry-secret-journal/releases/latest/download/module.json
+```
+
+You can also download the latest version from this repository's [Releases](../../releases) tab and extract it into your `Data/modules` folder.
 
 ## Inspiration
 

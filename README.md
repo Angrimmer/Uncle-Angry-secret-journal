@@ -35,7 +35,13 @@ Présentes sur (presque) tous les types de fiches ci-dessus :
 
 ## Installation
 
-Dans Foundry, onglet **Modules complémentaires** → **Installer un module**, puis collez l'URL du manifest de ce dépôt. Vous pouvez aussi télécharger la dernière version depuis l'onglet [Releases](../../releases) de ce dépôt et l'extraire dans votre dossier `Data/modules`.
+Dans Foundry, onglet **Modules complémentaires** → **Installer un module**, puis collez cette URL de manifest :
+
+```
+https://github.com/Angrimmer/Uncle-Angry-secret-journal/releases/latest/download/module.json
+```
+
+Vous pouvez aussi télécharger la dernière version depuis l'onglet [Releases](../../releases) de ce dépôt et l'extraire dans votre dossier `Data/modules`.
 
 ## Inspiration
 

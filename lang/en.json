@@ -53,7 +53,13 @@
       "Yeux": "Eyes",
       "Cheveux": "Hair",
       "Peau": "Skin",
-      "Voix": "Voice"
+      "Voix": "Voice",
+      "Ascendance": "Ancestry",
+      "Traits": "Personality traits",
+      "Ideaux": "Ideals",
+      "Liens": "Bonds",
+      "Defauts": "Flaws",
+      "Localisation": "Location"
     },
     "Apparence": {
       "Label": "Appearance",
