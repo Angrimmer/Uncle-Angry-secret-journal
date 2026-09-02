@@ -57,6 +57,8 @@ export class PresentationPageSheet extends InfoChipsCapabilityMixin(JournalEntry
       uasjConfigurerInfos: PresentationPageSheet.onConfigurerInfos,
       uasjVerrouillerInfos: PresentationPageSheet.onVerrouillerInfos,
       uasjVersRelations: PresentationPageSheet.#onVersRelations,
+      uasjToggleDescription: PresentationPageSheet.#onToggleDescription,
+      uasjInsererImageDescription: PresentationPageSheet.#onInsererImageDescription,
       uasjToggleMode: PresentationPageSheet.#onToggleMode,
       uasjAgrandirPortrait: PresentationPageSheet.#onAgrandirPortrait,
       uasjClicSon: { handler: PresentationPageSheet.#onClicSon, buttons: [0, 2] },
@@ -100,6 +102,7 @@ export class PresentationPageSheet extends InfoChipsCapabilityMixin(JournalEntry
   _toggleDisabled(disabled) {
     super._toggleDisabled(disabled);
     this.element.querySelector(".uasj-toggle")?.removeAttribute("disabled");
+    this.element.querySelector(".uasj-toggle-description")?.removeAttribute("disabled");
   }
 
   /** @override */
@@ -149,6 +152,7 @@ export class PresentationPageSheet extends InfoChipsCapabilityMixin(JournalEntry
     if (this.isView) {
       this._bindInfoDragging();
       this.#applyCardAppearance();
+      this.#bindDescriptionImageClicks();
     }
   }
 
@@ -211,6 +215,30 @@ export class PresentationPageSheet extends InfoChipsCapabilityMixin(JournalEntry
     this.element.style.color = texte || "";
   }
 
+  /**
+   * Any <img> inside the description (typed by hand, or dropped in via the
+   * "insert image" button) opens the same enlarge popout as every other
+   * image in this module - delegated on the container rather than bound
+   * per-image, so it also covers images already present before this
+   * feature existed (e.g. migrated content), not just newly-inserted ones.
+   * Re-bound on every render since root:true's content part is replaced
+   * wholesale each time, taking any previously-attached listener with it.
+   */
+  #bindDescriptionImageClicks() {
+    const container = this.element.querySelector(".uasj-presentation-description-view");
+    if (!container) return;
+
+    for (const img of container.querySelectorAll("img")) {
+      img.dataset.tooltip = game.i18n.localize("UASJ.Image.Agrandir");
+    }
+
+    container.addEventListener("click", event => {
+      const img = event.target.closest("img");
+      if (!img) return;
+      showImagePopout(img.src, this.page.system.role || this.document.name);
+    });
+  }
+
   /** @inheritDoc */
   async _prepareContentContext(context, options) {
     context.src = this.page.src;
@@ -224,6 +252,10 @@ export class PresentationPageSheet extends InfoChipsCapabilityMixin(JournalEntry
       context.role = this.page.system.role;
       context.isOwner = this.page.isOwner;
       context.infosVerrouillees = this.page.system.infosVerrouillees;
+      context.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+        this.page.system.description,
+        { relativeTo: this.page, secrets: this.page.isOwner }
+      );
     }
   }
 
@@ -243,6 +275,49 @@ export class PresentationPageSheet extends InfoChipsCapabilityMixin(JournalEntry
 
   static #onVersRelations() {
     return switchToSiblingPage(this, RELATIONS_TYPE);
+  }
+
+  /**
+   * Swaps the right column between the info-chips canvas and the full
+   * description text - a pure client-side class toggle (both blocks are
+   * always in the DOM, see view.hbs), not a re-render, so no state needs
+   * to be tracked on the sheet instance itself.
+   */
+  static #onToggleDescription() {
+    const modeDescription = this.element.classList.toggle("uasj-mode-description");
+    const bouton = this.element.querySelector(".uasj-toggle-description");
+    if (!bouton) return;
+    const icone = bouton.querySelector("i");
+    if (icone) icone.className = modeDescription ? "fa-solid fa-id-card" : "fa-solid fa-book";
+    bouton.dataset.tooltip = game.i18n.localize(
+      modeDescription ? "UASJ.Toggle.VersInfos" : "UASJ.Toggle.VersDescription"
+    );
+  }
+
+  /**
+   * Opens Foundry's own file picker and inserts an <img> tag for the chosen
+   * file into the description textarea at the cursor, as raw HTML text -
+   * consistent with the "gros texte brut" convention this field already
+   * follows (see edit.hbs), same as Lieu/Magasin's own description field.
+   * Dispatches a real "change" event afterward so the existing isolated
+   * autosave (helpers/autosave.mjs) picks it up and saves it exactly like
+   * any other edit to this field, without a separate save path.
+   */
+  static async #onInsererImageDescription() {
+    const FilePickerImpl = foundry.applications.apps.FilePicker.implementation;
+    const path = await new Promise(resolve => {
+      new FilePickerImpl({ type: "image", callback: resolve }).render(true);
+    });
+    if (!path) return;
+
+    const textarea = this.element.querySelector('textarea[name="system.description"]');
+    if (!textarea) return;
+
+    const balise = `<img src="${path}">`;
+    const debut = textarea.selectionStart ?? textarea.value.length;
+    const fin = textarea.selectionEnd ?? textarea.value.length;
+    textarea.value = textarea.value.slice(0, debut) + balise + textarea.value.slice(fin);
+    textarea.dispatchEvent(new Event("change", { bubbles: true }));
   }
 
   static async #onToggleMode() {

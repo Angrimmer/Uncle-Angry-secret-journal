@@ -21,6 +21,17 @@
                 <input type="text" name="system.role" value="{{source.system.role}}">
             </div>
 
+            <div class="uasj-field">
+                <label class="uasj-presentation-description-label">
+                    {{localize "UASJ.Presentation.Description"}}
+                    <button type="button" class="uasj-inserer-image-description" data-action="uasjInsererImageDescription"
+                            data-tooltip="{{localize 'UASJ.Presentation.InsererImage'}}">
+                        <i class="fa-solid fa-image"></i>
+                    </button>
+                </label>
+                <textarea name="system.description" class="uasj-presentation-description-edit">{{source.system.description}}</textarea>
+            </div>
+
             {{#if infos.length}}
             <div class="uasj-field uasj-infos-edit">
                 <label>{{localize "UASJ.Infos.Label"}}</label>

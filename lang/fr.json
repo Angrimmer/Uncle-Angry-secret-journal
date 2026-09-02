@@ -17,7 +17,8 @@
     },
     "Presentation": {
       "Role": "Nom & titre",
-      "Description": "Description"
+      "Description": "Description",
+      "InsererImage": "Insérer une image"
     },
     "Kinds": {
       "Label": "Type de journal",
@@ -78,6 +79,8 @@
     "Toggle": {
       "VersRelations": "Voir les relations",
       "VersPresentation": "Voir la présentation",
+      "VersDescription": "Voir la description",
+      "VersInfos": "Voir les informations",
       "Absente": "Aucune page correspondante trouvée dans ce journal.",
       "MontrerJoueurs": "Montrer aux joueurs"
     },

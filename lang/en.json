@@ -17,7 +17,8 @@
     },
     "Presentation": {
       "Role": "Name & title",
-      "Description": "Description"
+      "Description": "Description",
+      "InsererImage": "Insert an image"
     },
     "Kinds": {
       "Label": "Journal type",
@@ -78,6 +79,8 @@
     "Toggle": {
       "VersRelations": "View relations",
       "VersPresentation": "View presentation",
+      "VersDescription": "View description",
+      "VersInfos": "View info",
       "Absente": "No matching page found in this journal.",
       "MontrerJoueurs": "Show to players"
     },

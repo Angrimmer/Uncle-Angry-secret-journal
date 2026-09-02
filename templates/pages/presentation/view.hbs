@@ -17,19 +17,29 @@
         </div>
 
         <div class="uasj-card-right">
+            <button type="button" class="uasj-toggle-description" data-action="uasjToggleDescription"
+                    data-tooltip="{{localize 'UASJ.Toggle.VersDescription'}}">
+                <i class="fa-solid fa-book"></i>
+            </button>
+
             {{#if role}}<h1 class="uasj-nom">{{ role }}</h1>{{/if}}
 
             {{#if infos.length}}
             <div class="uasj-infos-canvas{{#if isOwner}}{{#unless infosVerrouillees}} uasj-draggable{{/unless}}{{/if}}">
                 {{#each infos}}
                 {{#if this.valeur}}
-                <span class="uasj-info-chip" data-info-id="{{this.id}}" style="left: {{this.x}}%; top: {{this.y}}%;">
+                <span class="uasj-info-chip" data-info-id="{{this.id}}" style="left: {{this.x}}%; top: {{this.y}}%;"
+                      data-tooltip="{{localize this.label}} : {{this.valeur}}">
                     <strong>{{localize this.label}}</strong> {{this.valeur}}
                 </span>
                 {{/if}}
                 {{/each}}
             </div>
             {{/if}}
+
+            <div class="uasj-presentation-description-view">
+                {{{description}}}
+            </div>
         </div>
 
     </div>

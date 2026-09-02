@@ -13,7 +13,8 @@
             <div class="uasj-infos-canvas{{#if isOwner}}{{#unless infosVerrouillees}} uasj-draggable{{/unless}}{{/if}}">
                 {{#each infos}}
                 {{#if this.valeur}}
-                <span class="uasj-info-chip" data-info-id="{{this.id}}" style="left: {{this.x}}%; top: {{this.y}}%;">
+                <span class="uasj-info-chip" data-info-id="{{this.id}}" style="left: {{this.x}}%; top: {{this.y}}%;"
+                      data-tooltip="{{localize this.label}} : {{this.valeur}}">
                     <strong>{{localize this.label}}</strong> {{this.valeur}}
                 </span>
                 {{/if}}
