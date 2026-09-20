@@ -69,17 +69,21 @@ export class RelationsPageSheet extends RelationsCapabilityMixin(JournalEntryPag
 
   /**
    * Foundry's own DocumentSheetV2 disables every element in form.elements
-   * (which includes plain <button>s, not just data-entry fields) whenever
-   * the current user can't edit the document - correct for actual form
-   * controls, but it swept up the presentation/relations toggle along with
-   * them, silently blocking a non-owner (e.g. an observer) from flipping
-   * between the two sides of the card even though that's navigation, not
-   * editing.
+   * (which includes plain <button>s and this view's own search <input>, not
+   * just data-entry fields) whenever the current user can't edit the
+   * document - correct for actual form controls, but it swept up the
+   * presentation/relations toggle and the view-mode relations search bar
+   * along with them, silently blocking a non-owner (e.g. an observer) from
+   * flipping between the two sides of the card or filtering the relations
+   * list, even though neither one edits anything - _bindRelationsFilter
+   * (helpers/relations-manager.mjs) is pure client-side show/hide, already
+   * bound regardless of ownership.
    * @override
    */
   _toggleDisabled(disabled) {
     super._toggleDisabled(disabled);
     this.element.querySelector(".uasj-toggle")?.removeAttribute("disabled");
+    this.element.querySelector(".uasj-relations-search")?.removeAttribute("disabled");
   }
 
   /**
