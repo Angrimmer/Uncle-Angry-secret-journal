@@ -55,6 +55,24 @@ export async function withLiveIdentity(relation) {
 }
 
 /**
+ * Same live re-resolution as withLiveIdentity, but for read-only display to
+ * a specific viewer (game.user) instead of the page owner's own edit form.
+ * A relation linked to a journal the current viewer can't even observe
+ * (Document#visible, false for anyone below Limited - GM excepted) resolves
+ * to null - the caller (_prepareRelationsViewContext) drops it from the
+ * list entirely, rather than leaking that target's real name/portrait, or
+ * even the fact that a relation to *someone* exists there, just because
+ * someone else wrote about them here.
+ */
+export async function withViewableIdentity(relation) {
+  if (!relation.journalUuid) return relation;
+  const linked = await fromUuid(relation.journalUuid);
+  if (!linked) return relation;
+  if (!linked.visible) return null;
+  return { ...relation, ...resolveIdentity(linked) };
+}
+
+/**
  * Adds "a list of relations, linkable via drag-drop/search to an existing
  * journal, edited one at a time in an open/close accordion" to any
  * JournalEntryPageHandlebarsSheet whose data model has a "relations" array
@@ -267,15 +285,22 @@ export const RelationsCapabilityMixin = Base => class extends Base {
    * Fills context.relations for read-only display - matches what
    * templates/partials/relations-panel-view.hbs expects. Drops the
    * intimate text for anyone who isn't the page owner and isn't on that
-   * specific relation's own viewer list. Call from a sheet's
+   * specific relation's own viewer list, and drops the whole relation card
+   * for one linked to a journal this viewer has no rights to
+   * (withViewableIdentity resolves those to null) - unlike edit mode
+   * (owner-only, always the real identity via withLiveIdentity), this is
+   * shown to every viewer of the card, including ones the linked journal
+   * was never meant to be visible to. Call from a sheet's
    * _prepareContentContext, in view mode.
    */
   async _prepareRelationsViewContext(context) {
     const isOwner = this.page.isOwner;
     const userId = game.user.id;
-    context.relations = await Promise.all(this.page.system.relations.map(async relation => {
+    const relations = await Promise.all(this.page.system.relations.map(async relation => {
+      const identity = await withViewableIdentity(relation);
+      if (!identity) return null;
+      const { img, nom, titre, journalUuid } = identity;
       const canSeeIntime = isOwner || relation.intimeVisibleA.has(userId);
-      const { img, nom, titre, journalUuid } = await withLiveIdentity(relation);
       return {
         img,
         nom,
@@ -290,6 +315,7 @@ export const RelationsCapabilityMixin = Base => class extends Base {
           : null
       };
     }));
+    context.relations = relations.filter(relation => relation !== null);
   }
 
   /* -------------------------------------------- */

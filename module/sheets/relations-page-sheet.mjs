@@ -72,34 +72,47 @@ export class RelationsPageSheet extends RelationsCapabilityMixin(JournalEntryPag
    * (which includes plain <button>s and this view's own search <input>, not
    * just data-entry fields) whenever the current user can't edit the
    * document - correct for actual form controls, but it swept up the
-   * presentation/relations toggle and the view-mode relations search bar
-   * along with them, silently blocking a non-owner (e.g. an observer) from
-   * flipping between the two sides of the card or filtering the relations
-   * list, even though neither one edits anything - _bindRelationsFilter
+   * view-mode relations search bar along with them, silently blocking a
+   * non-owner (e.g. an observer) from filtering the relations list even
+   * though that edits nothing - _bindRelationsFilter
    * (helpers/relations-manager.mjs) is pure client-side show/hide, already
-   * bound regardless of ownership.
+   * bound regardless of ownership. (The presentation/relations toggle used
+   * to need the same exception here too, back when it was an in-body
+   * button - now a title-bar button via _getFrameButtons, so form.elements
+   * never touches it at all.)
    * @override
    */
   _toggleDisabled(disabled) {
     super._toggleDisabled(disabled);
-    this.element.querySelector(".uasj-toggle")?.removeAttribute("disabled");
     this.element.querySelector(".uasj-relations-search")?.removeAttribute("disabled");
   }
 
   /**
-   * Montrer aux joueurs / couper-lancer l'ambiance sonore / basculer
-   * voir-modifier - always visible in the title bar rather than tucked in
-   * the "..." dropdown, per Alex: bien visibles, décalés à gauche, dans cet
-   * ordre. The ambiance button alone is shown to everyone, not just the
-   * owner - so an observer can at least stop the music, even though only
-   * the owner can pick which sound plays (right-click, gated inside
-   * #onClicSon) - matches ensureAmbianceSound's own "atmosphere for
-   * whoever's looking" reasoning.
+   * Vers Présentation / montrer aux joueurs / couper-lancer l'ambiance
+   * sonore / basculer voir-modifier - always visible in the title bar
+   * rather than tucked in the "..." dropdown, per Alex: bien visibles,
+   * décalés à gauche, dans cet ordre. uasjVersPresentation moved here from
+   * an in-body button (templates/pages/relations/view.hbs and edit.hbs)
+   * because it sat inside .uasj-relations-view, this sheet's own scrolling
+   * container - a title-bar button is structurally outside the scrollable
+   * body, so it can no longer drift over the content while scrolling,
+   * regardless of whatever exactly caused that. The ambiance button alone
+   * is shown to everyone, not just the owner - so an observer can at least
+   * stop the music, even though only the owner can pick which sound plays
+   * (right-click, gated inside #onClicSon) - matches ensureAmbianceSound's
+   * own "atmosphere for whoever's looking" reasoning. uasjVersPresentation
+   * is likewise everyone's, not owner-gated - navigating between the two
+   * sides of the card is just that, navigation, not editing.
    * @override
    */
   _getFrameButtons(options) {
     const buttons = super._getFrameButtons(options);
     const mine = [
+      {
+        action: "uasjVersPresentation",
+        icon: "fa-solid fa-id-card",
+        label: "UASJ.Toggle.VersPresentation"
+      },
       {
         action: "uasjClicSon",
         icon: isAmbianceSoundPlaying(this) ? "fa-solid fa-volume-high" : "fa-solid fa-volume-off",
