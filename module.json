@@ -2,7 +2,7 @@
   "id": "uncle-angry-secret-journal",
   "title": "Uncle Angry Secret Journal",
   "description": "Module de journal enrichi pour Foundry VTT — personnages, lieux, magasins et galeries d'images en véritables fiches, indépendant de tout système de jeu.",
-  "version": "0.0.1",
+  "version": "0.80",
   "compatibility": {
     "minimum": "13",
     "verified": "14",

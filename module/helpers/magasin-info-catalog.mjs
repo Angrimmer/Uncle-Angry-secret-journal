@@ -1,14 +1,13 @@
 import { choiceList } from "./info-catalog.mjs";
 
 const REPUTATIONS = choiceList(["Excellente", "Bonne", "Correcte", "Douteuse", "Infâme"]);
-// Monk's own Shop sheet tracks an explicit open/closed state alongside its
-// hours of operation - worth keeping as its own chip rather than folding
-// into "Horaires" (texte libre), since it's the one thing a player usually
-// wants to know at a glance.
+// An explicit open/closed state alongside the hours of operation - worth
+// keeping as its own chip rather than folding into "Horaires" (texte
+// libre), since it's the one thing a player usually wants to know at a
+// glance.
 const ETATS = choiceList(["Ouvert", "Fermé"]);
-// Not in Monk's shop-attributes (it doesn't have a dedicated list the way
-// person/place do) - added since a "secret journal" module is a natural
-// fit for restricted-access shops (black market, invitation only).
+// Added since a "secret journal" module is a natural fit for
+// restricted-access shops (black market, invitation only).
 const ACCES = choiceList(["Public", "Sur invitation", "Marché noir"]);
 
 /**

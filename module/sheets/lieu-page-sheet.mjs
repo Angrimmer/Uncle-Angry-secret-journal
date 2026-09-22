@@ -86,8 +86,7 @@ export class LieuPageSheet extends InfoChipsCapabilityMixin(RelationsCapabilityM
   /**
    * No header/footer part - same reasoning as the other card sheets. A
    * single root part whose template contains the tab nav and every tab's
-   * content together (like Monk's own person.html, reference for
-   * structure only) - simpler than juggling several PARTS just to get one
+   * content together - simpler than juggling several PARTS just to get one
    * tab group.
    * @override
    */
